@@ -32,7 +32,7 @@ def configure_endpoints(app):
         version="1.0",
         description="API Documentation of apis.",
         doc=Config.SWAGGER_UI_URL,
-        prefix="/"
+        prefix="/api"
     )
 
     restx_api.add_namespace(namespace)
