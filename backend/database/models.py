@@ -1,8 +1,8 @@
 from datetime import datetime
-from sqlalchemy import Column, Enum, Integer, String, DateTime
+from sqlalchemy import Column, Enum, ForeignKey, Integer, String, DateTime
 
 from backend.database.datatypes import LinkPrecedenceTypes
-from connector import Base, db_engine
+from .connector import Base, db_engine
 
 
 class User(Base):
@@ -11,7 +11,7 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement='auto')
     phoneNumber = Column(String)
     email = Column(String)
-    linkedId = Column(Integer)
+    linkedId = Column(Integer, ForeignKey(id))
     linkPrecedence = Column(Enum(*LinkPrecedenceTypes.all(), name="link_precedence_types"), nullable=False)
     createdAt = Column(DateTime, nullable=False, default=datetime.utcnow)
     updatedAt = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)

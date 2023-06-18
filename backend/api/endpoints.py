@@ -13,7 +13,7 @@ class IdentityView(Resource):
         "Identity",
         {
             "email": fields.String(example="shyamsar30@gmail.com", description="Email Address"),
-            "phoneNumber": fields.Integer(example=1234567898, description="Mobile Number")
+            "phoneNumber": fields.String(example="1234567898", description="Mobile Number")
         }
     )
 
