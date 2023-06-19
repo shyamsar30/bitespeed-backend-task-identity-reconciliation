@@ -23,7 +23,5 @@ def handle_exceptions(exception):
         return Exception
     elif isinstance(exception, HTTPException):
         return Exception
-    
-    raise Exception
 
     return respond(400, "Server Error", str(exception))

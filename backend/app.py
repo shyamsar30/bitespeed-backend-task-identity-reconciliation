@@ -61,12 +61,14 @@ def init_app():
     configure_endpoints(app)
     configure_database(app)
 
+    app.config['DEBUG'] = True
+
     @app.route('/')
     def home():
         return redirect(Config.SWAGGER_UI_URL)
 
     return app
 
-if __name__ == "__main__":
-    app = init_app()
-    app.run(debug=True)
+
+app = init_app()
+app.run(debug=True)
