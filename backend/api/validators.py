@@ -11,9 +11,10 @@ class UserValidator(Schema):
         email = input_data.get('email')
         if (not phone) and (not email):
             raise ValidationError("PhoneNumber or Email is required.")
-        try:
-            int(phone)
-        except Exception as e:
-            raise ValidationError("Invalid PhoneNumber")
+        if phone:
+            try:
+                int(phone)
+            except Exception as e:
+                raise ValidationError("Invalid PhoneNumber")
         
         return input_data

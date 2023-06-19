@@ -1,3 +1,4 @@
+from flask import jsonify
 from backend.api.responses import respond
 from backend.database.dao import user_dao_handler
 from backend.database.datatypes import LinkPrecedenceTypes
@@ -138,4 +139,7 @@ def generate_response(email, phoneNumber):
         }
     }
 
-    return respond(200, "Success", payload)
+    response = jsonify(payload)
+    response.status_code = 200
+
+    return response

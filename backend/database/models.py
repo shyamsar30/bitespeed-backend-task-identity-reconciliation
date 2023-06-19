@@ -6,7 +6,7 @@ from .connector import Base, db_engine
 
 
 class User(Base):
-    __tablename__ = "users"
+    __tablename__ = "Contact"
 
     id = Column(Integer, primary_key=True, index=True, autoincrement='auto')
     phoneNumber = Column(String)
