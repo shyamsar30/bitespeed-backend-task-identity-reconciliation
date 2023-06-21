@@ -7,10 +7,10 @@ from backend.api.views import identify
 
 namespace = Namespace(name="Identity Namespace", path='/')
 
-@namespace.route('/identity')
+@namespace.route('/identify')
 class IdentityView(Resource):
     POST_DOC_MODEL = namespace.model(
-        "Identity",
+        "Identify",
         {
             "email": fields.String(example="shyamsar30@gmail.com", description="Email Address"),
             "phoneNumber": fields.String(example="1234567898", description="Mobile Number")
@@ -20,7 +20,7 @@ class IdentityView(Resource):
     @namespace.expect(POST_DOC_MODEL)
     def post(self):
         """
-        Identity Endpoint
+        Identify Endpoint
         """
         validated_json = UserValidator().load(request.json)
         return identify(validated_json)
