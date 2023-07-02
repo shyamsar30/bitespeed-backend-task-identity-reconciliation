@@ -34,6 +34,12 @@ class UserDao(GenericDao):
         ).all()
     
     def get_partital_record(self, email, phoneNumber):
+
+        if not email:
+            email = "dummy"
+        if not phoneNumber:
+            phoneNumber = "-1"
+
         return g.db_session.query(
             self.model
         ).filter(
@@ -45,6 +51,12 @@ class UserDao(GenericDao):
         return self.upsert(db_obj)
     
     def get_ids_from_email_phone(self, email, phoneNumber):
+
+        if not email:
+            email = "dummy"
+        if not phoneNumber:
+            phoneNumber = "-1"
+
         return g.db_session.query(
             self.model
         ).filter(

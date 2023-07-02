@@ -13,7 +13,7 @@ class UserValidator(Schema):
             raise ValidationError("PhoneNumber or Email is required.")
         if phone:
             try:
-                int(phone)
+                assert int(phone) > 0
             except Exception as e:
                 raise ValidationError("Invalid PhoneNumber")
         
